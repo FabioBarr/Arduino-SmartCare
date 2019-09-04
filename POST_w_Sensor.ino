@@ -3,7 +3,7 @@
 #include <SPI.h>
 
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-char server[] = "www.ptsv2.com";
+char server[] = "www.smartcare.pe.hu";
 int pinDHT11 = 2;
 EthernetClient client;
 SimpleDHT11 dht11(pinDHT11);
@@ -18,6 +18,10 @@ void setup() {
   Serial.println("========= Iniciando Setup =========");
   if (Ethernet.begin(mac) == 0) {
     Serial.println("Failed to configure Ethernet using DHCP"); 
+    while(Ethernet.begin(mac) !=1)
+    {
+      Serial.println("Trying Connection"); 
+    }
   }
  else{
       Serial.print(" - DHCP IP ");
@@ -32,15 +36,15 @@ void POST_SEND(int temp, int humi)
   String data;
   h = humi;
   t = temp;
-  data = String("temp=") + t + "&hum=" + h + "&id_ambiente=1"+"&id_usuario=1"+"&id_sensor=1";
+  data = String("temp=") + t + "&hum=" + h + "&presenca=0"+"&id_sensor=4";
  //data = "{\"status\": {\"led_is\": \"on\"}}";
    
   if (client.connect(server,80)) { 
     Serial.println("========= POST =========");
     Serial.print(" - Conectado ao Servidor \n");
     // Make a HTTP request:                 
-    client.println("POST /t/md86d-1567266602/post HTTP/1.1");           
-    client.println("Host: www.ptsv2.com");
+    client.println("POST /index.php/entrada/retorno HTTP/1.1");           
+    client.println("Host: www.smartcare.pe.hu");
     client.println("Content-Type: application/x-www-form-urlencoded");//x-www-form-urlencoded
     client.println("Connection: close");
     client.println("Access-Control-Allow-Origin: *");
@@ -90,7 +94,7 @@ void Ler_Dados_Sensor()
 
   POST_SEND((int)temperature, (int)humidity);
   // DHT11 sampling rate is 1HZ.
-  delay(10000);
+  delay(12000);
 }
 
 
