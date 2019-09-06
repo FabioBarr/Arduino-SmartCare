@@ -12,4 +12,4 @@ Repositório dos Códigos de Arduino.
 * https://www.youtube.com/watch?v=BbiLBiFvlsI
 * https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html
 * https://www.youtube.com/watch?v=SiU-QZwik8w
-
+* https://www.youtube.com/watch?v=BfUtpScdQ9Y
