@@ -14,3 +14,6 @@ Repositório dos Códigos de Arduino.
 * https://www.youtube.com/watch?v=SiU-QZwik8w
 * https://www.youtube.com/watch?v=BfUtpScdQ9Y
 * https://techtutorialsx.com/2017/02/25/esp8266-scanning-wifi-networks/
+
+
+https://produto.mercadolivre.com.br/MLB-889829367-shield-wemos-d1-wifi-esp8266-esp-12e-arduino-original-_JM?quantity=1#position=9&type=item&tracking_id=a33e0206-5a31-42d7-af32-6b6979348f3b
