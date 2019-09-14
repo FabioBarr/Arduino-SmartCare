@@ -13,3 +13,4 @@ Repositório dos Códigos de Arduino.
 * https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html
 * https://www.youtube.com/watch?v=SiU-QZwik8w
 * https://www.youtube.com/watch?v=BfUtpScdQ9Y
+* https://techtutorialsx.com/2017/02/25/esp8266-scanning-wifi-networks/
