@@ -8,9 +8,10 @@
 int pinDHT11 = 2; // D4 data
 SimpleDHT11 dht11(pinDHT11);
 
+
 #ifndef STASSID
-#define STASSID ".:ESTUDIO:."
-#define STAPSK "maverick";
+#define STASSID "POCOPHONE"
+#define STAPSK "guigui10";
 #endif
 
 const char* ssid     = STASSID;
@@ -27,6 +28,8 @@ void setup() {
   Serial.begin(115200);
   Serial.println();
   Serial.println();
+  pinMode(13, OUTPUT);// Seta o pino 13 (D7)
+  pinMode(5, OUTPUT); // Seta o pino 5 (D1)
   Serial.print("Connecting to ");
   Serial.println(ssid);
   WiFi.mode(WIFI_STA);
@@ -46,6 +49,7 @@ void setup() {
 void loop() {
 
    Temp_Humid_Read();
+   
   ///////////////////////////////////////////////
   Serial.println("connecting to "+(String)host+":"+(String)port);
   // Use WiFiClient class to create TCP connections
@@ -101,8 +105,7 @@ void loop() {
   Serial.println();
   Serial.println("closing connection");
   client.stop();
-
-  delay(30000); // execute once every 5 minutes, don't flood remote service
+  delay(8000);// execute once every 5 minutes, don't flood remote service
 }
 
 void Temp_Humid_Read()
@@ -119,6 +122,7 @@ void Temp_Humid_Read()
     Serial.print("Erro ao ler info dos sensores");
     Serial.println(err);
     delay(1000);
+    PiscarLed(13); // Pin Failure
     return;
   }
 
@@ -129,7 +133,15 @@ void Temp_Humid_Read()
   Serial.println(" H");
   temp =  (int)temperature;
   humid = (int)humidity;
+  PiscarLed(5); // Pin Sucess
 
   // DHT11 sampling rate is 1HZ.
   //delay(1500);
+}
+void PiscarLed(int pin)
+{
+  digitalWrite(pin, HIGH); // Acende o Led
+  delay(1000); 
+  digitalWrite(pin, LOW); // Apaga o Led
+  delay(1000); 
 }
